@@ -2,7 +2,7 @@
 config.yaml
 *.db
 outbox/
-resume.*
+/resume.*
 !tests/fixtures/*
 __pycache__/
 *.egg-info/

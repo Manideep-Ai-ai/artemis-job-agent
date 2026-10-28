@@ -5,7 +5,7 @@ Thanks for helping! Artemis is small on purpose: plain Python, SQLite, server-re
 ## Setup
 
 ```bash
-git clone https://github.com/ManideepDelta/artemis.git && cd artemis
+git clone https://github.com/Manideep-Ai-ai/artemis.git && cd artemis
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 pytest

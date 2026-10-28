@@ -25,8 +25,8 @@ dependencies = [
 dev = ["pytest>=8"]
 
 [project.urls]
-Homepage = "https://github.com/ManideepDelta/artemis"
-Issues = "https://github.com/ManideepDelta/artemis/issues"
+Homepage = "https://github.com/Manideep-Ai-ai/artemis"
+Issues = "https://github.com/Manideep-Ai-ai/artemis/issues"
 
 [project.scripts]
 leadhunter = "leadhunter.cli:main"

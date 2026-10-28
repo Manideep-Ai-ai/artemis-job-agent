@@ -1,10 +1,11 @@
-# Artemis
+<p align="center"><img src="docs/logo.png" alt="Artemis" width="620"></p>
 
-**Your own job-hunting and freelance agent that runs on your computer.**
+<p align="center"><b>Your own job-hunting and freelance agent that runs on your computer.</b></p>
+
 Give it your resume. It finds matching jobs and client projects, finds the right person to contact, writes the email or
 proposal, sends it from your own Gmail after you approve it, and follows up until they answer.
 
-[![tests](https://github.com/ManideepDelta/artemis/actions/workflows/ci.yml/badge.svg)](https://github.com/ManideepDelta/artemis/actions/workflows/ci.yml)
+[![tests](https://github.com/Manideep-Ai-ai/artemis/actions/workflows/ci.yml/badge.svg)](https://github.com/Manideep-Ai-ai/artemis/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-black)
 ![License: MIT](https://img.shields.io/badge/license-MIT-black)
 ![Runs locally](https://img.shields.io/badge/runs-on%20your%20computer-black)
@@ -41,7 +42,7 @@ Artemis does the searching, matching, finding and writing, and leaves the decisi
 You need Python 3.10 or newer.
 
 ```bash
-git clone https://github.com/ManideepDelta/artemis.git
+git clone https://github.com/Manideep-Ai-ai/artemis.git
 cd artemis
 python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -e .

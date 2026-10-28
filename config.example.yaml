@@ -1,0 +1,84 @@
+# LeadHunter configuration. Easiest way to fill this in: run `leadhunter setup`
+# (terminal) or open the dashboard (`leadhunter web`), which asks you questions.
+# Secrets (passwords, API keys) go in .env, never in this file.
+
+# What you're here for:
+#   jobs      - find jobs and email recruiters / hiring managers
+#   freelance - find client projects and send proposals
+#   both      - jobs and freelance
+#   leads     - just collect leads into a list / CSV, no emails
+mode: "jobs"
+lead_types: ["job", "freelance"]     # only used in 'leads' mode
+
+profile:
+  name: "Your Name"
+  resume_path: "resume.pdf"          # PDF, DOCX or TXT. Read locally on your computer.
+  skills: []                         # leave empty to read them from your resume
+  years: 1.5
+  roles: ["Backend Engineer", "Full Stack Developer", "AI Engineer"]
+  locations: ["Hyderabad", "Bangalore", "Remote"]
+  linkedin_url: ""                   # shown in your email signature
+  portfolio_url: ""
+  phone: ""
+  # Freelance
+  pitch: ""                          # one line about you for proposals
+  currency: "USD"
+  min_hourly: 15                     # projects paying less are marked "stretch"
+  min_fixed: 100
+
+# Where leads come from. All official public APIs / feeds: no logins, no scraping.
+sources:
+  remotive: true                     # remote jobs API
+  arbeitnow: true                    # free public job API
+  greenhouse: ["airbnb"]             # company board tokens: boards.greenhouse.io/<token>
+  lever: ["palantir"]                # company names: jobs.lever.co/<name>
+  ashby: ["ramp"]                    # org names: jobs.ashbyhq.com/<org>
+  smartrecruiters: []                # company ids: jobs.smartrecruiters.com/<id>
+  recruitee: []                      # subdomains: <name>.recruitee.com
+  hackernews: true                   # monthly "Ask HN: Who is hiring?" (jobs + contract gigs, often with an email)
+  freelancer: true                   # Freelancer.com project search (you bid on the site)
+  freelancer_queries: []             # search words; empty = your top skills
+  reddit: false                      # r/forhire [Hiring]; needs REDDIT_CLIENT_ID / REDDIT_CLIENT_SECRET in .env
+  max_age_days: 7
+
+# LinkedIn: LeadHunter only WRITES notes/messages; you send them yourself (LinkedIn bans automation).
+linkedin:
+  drafts: true
+
+# AI is optional. Any OpenAI-compatible endpoint works:
+#   gemini  -> free tier (GEMINI_API_KEY)     groq   -> free tier (GROQ_API_KEY)
+#   ollama  -> free, offline on your computer  openai -> OPENAI_API_KEY
+# Model names change over time; check your provider's list if one stops working.
+ai:
+  provider: "none"                   # gemini | groq | ollama | openai | none
+  model: ""
+  base_url: ""                       # leave empty to use the provider default
+
+# Web search used to find recruiters / hiring managers (search engines, never LinkedIn itself).
+search:
+  provider: "none"                   # brave | tavily | searxng | none
+  searxng_url: "http://localhost:8080"
+  max_contacts_per_job: 2
+
+email_finder:
+  hunter: false                      # set HUNTER_API_KEY in .env and true here to use Hunter's free tier
+  require_mx: true                   # skip companies whose domain has no mail server
+
+outreach:
+  daily_limit: 10                    # total emails per day incl. follow-ups. Hard ceiling is 20.
+  require_approval: true             # you approve every first email before it is sent
+  attach_resume: true
+  followups: [4, 7]                  # days after the previous email; max 3 follow-ups
+  send_window: ["09:30", "18:30"]    # local time; emails only go out in working hours
+  weekdays_only: true                # no emails on Saturday/Sunday
+  min_gap_minutes: 3                 # random gap between sends looks human, avoids spam flags
+  max_gap_minutes: 9
+
+mail:
+  dry_run: true                      # practice mode: write emails to ./outbox/*.eml instead of sending
+  smtp_host: "smtp.gmail.com"
+  smtp_port: 465
+  imap_host: "imap.gmail.com"
+  from_address: "you@gmail.com"      # password goes in .env as GMAIL_APP_PASSWORD
+
+database: "leadhunter.db"

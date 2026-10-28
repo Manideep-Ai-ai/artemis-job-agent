@@ -1,0 +1,74 @@
+{
+ "id": "744000157766448",
+ "name": "Responsable Comptabilité (F/H/NB)",
+ "uuid": "d02d36a1-1e40-4d27-b8ea-e3ad52688eb2",
+ "jobId": "c279a09b-d0ac-40ac-94a5-faf81ed9c7c6",
+ "jobAdId": "9c30ee7e-7c20-4866-bde9-019d2812db20",
+ "defaultJobAd": true,
+ "refNumber": "REF32222K",
+ "company": {
+  "name": "Ubisoft",
+  "identifier": "Ubisoft2"
+ },
+ "location": {
+  "city": "Paris",
+  "region": "IDF",
+  "country": "fr",
+  "remote": false,
+  "hybrid": false,
+  "latitude": "48.8575475",
+  "longitude": "2.3513765",
+  "fullLocation": "Paris, IDF, France"
+ },
+ "releasedDate": "2026-10-26T10:05:44.410Z",
+ "postingUrl": "https://jobs.smartrecruiters.com/Ubisoft2/744000157766448-responsable-comptabilite-f-h-nb-",
+ "applyUrl": "https://jobs.smartrecruiters.com/Ubisoft2/744000157766448-responsable-comptabilite-f-h-nb-?oga=true",
+ "referralUrl": "https://jobs.smartrecruiters.com/external-referrals/company/Ubisoft2/publication/d02d36a1-1e40-4d27-b8ea-e3ad52688eb2?dcr_ci=Ubisoft2",
+ "jobAd": {
+  "sections": {
+   "companyDescription": {
+    "title": "Description de l'entreprise",
+    "text": "<p>Ubisoft est une référence mondiale du jeu vidéo, avec des équipes réparties aux quatre coins du monde qui créent des expériences de jeu originales et mémorables, de Assassin’s Creed à Rainbow Six en passant par Just Dance et bien d’autres encore. Nous croyons que la diversité des points de vue fait progresser à la fois les joueurs et les équipes. Si vous êtes passionné·e par l’innovation et que vous souhaitez repousser les limites du divertissement, rejoignez notre aventure et aidez-nous à créer l’inconnu !</p>"
+   },
+   "jobDescription": {
+    "title": "Description du poste",
+    "text": "<p>Rattaché.e à l’Accounting Director du siège international d’Ubisoft, vous êtes amené.e à évoluer en autonomie sur votre périmètre et dans le pilotage de votre équipe.</p><p>Plus précisément vos missions seront les suivantes :</p><ul><li>Manager une équipe de comptabilité générale et auxiliaire&#xa0;</li><li>Anticiper, organiser, coordonner et superviser les activités de l'équipe afin de garantir la production des reporting mensuels, semestriels et annuels</li><li>Être le/la garant.e de la fiabilité des comptes et de l’application des normes comptables françaises et IFRS</li><li>Superviser la fiscalité :&#xa0;déclarations TVA française, RAS, CVAE/CFE,Tax pack</li><li>Être responsable de la production des annexes sociales</li><li>Participer à l’optimisation de la comptabilité par la mise en place et rédaction&#xa0;de procédures</li><li>Être l’interlocuteur.rice priviligié.e des auditeurs internes et externes</li></ul>"
+   },
+   "qualifications": {
+    "title": "Qualifications",
+    "text": "<p><strong>Expérience pertinente</strong></p><ul><li>Vous justifiez d'une forte expertise en finance/comptabilité et d'une expérience pratique très solide en comptabilité générale et en fiscalité idéalement acquise en filiale de groupe international.</li><li>Vous avez une expérience en management d’équipe, bon.ne communicant.e habitué.e à un environnement diversifié et à travailler en équipe.</li></ul><p><strong>Compétences et connaissances</strong></p><ul><li>Vous êtes extrêmement structuré et organisé avec un sens des priorités.</li><li>Vous êtes dynamique et force de proposition pour insuffler de nouvelles idées</li><li>Vous avez une très bonne maîtrise d’Excel</li><li>Une maîtrise de l’Anglais à un niveau professionnel, à l’écrit comme à l’oral, est un plus</li></ul>"
+   },
+   "additionalInformation": {
+    "title": "Informations supplémentaires",
+    "text": "<p><strong>Avantages Ubisoft</strong></p><p>💰 Participation, plan d'épargne entreprise. En plus : 25 CP, 12 RTT, 50% du pass de transport pris en charge, des tickets resto, une bonne mutuelle, et plein d'avantages Ubisoft.<br>\n👶 Congé maternité de 20 semaines, congé paternité/co-parental de 7 semaines<br>\n📍 Nos locaux sont à Saint Mandé (ligne 1, arrêt Saint Mandé), salle de sport dans les locaux.<br>\n&#xa0;</p><p><strong>Processus de recrutement</strong></p><p>[30 minutes] : échange téléphonique avec un Recruteur,<br>\n[60 minutes] : entretien avec la manager du poste et un Recruteur,<br>\n[60 minutes] : entretien avec la manager du poste et la Directrice Administrative, et un.e Responsable Ressources Humaines.</p><p><strong>Informations complémentaires</strong></p><p>En tant qu’employeur, Ubisoft offre à tous les mêmes opportunités d’accès à l’emploi sans distinction de genre, ethnicité, religion, orientation sexuelle, statut social, handicap et d’âge. Ubisoft veille à développer un environnement de travail inclusif qui reflète la diversité de sa communauté de joueurs &amp; joueuses dans ses équipes.&#xa0;</p>"
+   }
+  }
+ },
+ "active": true,
+ "visibility": "PUBLIC",
+ "industry": {
+  "id": "entertainment",
+  "label": "Entertainment"
+ },
+ "function": {
+  "id": "finance",
+  "label": "Finance"
+ },
+ "department": {
+  "id": 13847731,
+  "label": "Ubisoft"
+ },
+ "experienceLevel": {
+  "id": "director",
+  "label": "Director"
+ },
+ "typeOfEmployment": {
+  "id": "permanent",
+  "label": "Full-time"
+ },
+ "language": {
+  "code": "fr",
+  "label": "French",
+  "labelNative": "français"
+ }
+}

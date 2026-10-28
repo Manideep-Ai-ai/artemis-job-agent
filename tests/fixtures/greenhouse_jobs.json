@@ -1,0 +1,85 @@
+{
+ "jobs": [
+  {
+   "absolute_url": "https://careers.airbnb.com/positions/7789554?gh_jid=7789554",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 3407102,
+   "location": {
+    "name": "Tokyo, Japan"
+   },
+   "metadata": [
+    {
+     "id": 9245691,
+     "name": "Is this job part of ACC?",
+     "value": false,
+     "value_type": "yes_no"
+    },
+    {
+     "id": 10216612,
+     "name": "Workplace Type",
+     "value": "Hybrid",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 7789554,
+   "updated_at": "2026-09-29T20:00:54-04:00",
+   "requisition_id": "ONE",
+   "title": "Associate Legal Counsel, Japan",
+   "company_name": "Airbnb",
+   "first_published": "2026-04-13T04:49:05-04:00",
+   "language": "en",
+   "application_deadline": null
+  },
+  {
+   "absolute_url": "https://careers.airbnb.com/positions/8231416?gh_jid=8231416",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 3562002,
+   "location": {
+    "name": "United States "
+   },
+   "metadata": [
+    {
+     "id": 9245691,
+     "name": "Is this job part of ACC?",
+     "value": false,
+     "value_type": "yes_no"
+    },
+    {
+     "id": 10216612,
+     "name": "Workplace Type",
+     "value": "Remote",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 8231416,
+   "updated_at": "2026-09-29T20:00:54-04:00",
+   "requisition_id": "ONE",
+   "title": "Associate Principal, Procurement Innovation Supplier Programs",
+   "company_name": "Airbnb",
+   "first_published": "2026-09-24T18:17:39-04:00",
+   "language": "en",
+   "application_deadline": null
+  }
+ ],
+ "meta": {
+  "total": 2
+ }
+}

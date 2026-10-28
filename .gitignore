@@ -1,0 +1,25 @@
+.env
+config.yaml
+*.db
+outbox/
+resume.*
+!tests/fixtures/*
+__pycache__/
+*.egg-info/
+.venv/
+.pytest_cache/
+
+# EGM-generated docs
+leadhunter/README.md
+*_DRIFT_REPORT.md
+key_status.json
+
+# local tools and OS files
+.DS_Store
+.claude/
+.claude-flow/
+.ruff_cache/
+
+# design source files (the app only needs leadhunter/static)
+output/
+LeadHunter UI design system/

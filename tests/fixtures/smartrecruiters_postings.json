@@ -1,0 +1,57 @@
+{
+ "offset": 0,
+ "limit": 2,
+ "totalFound": 335,
+ "content": [
+  {
+   "id": "744000157766448",
+   "name": "Responsable Comptabilité (F/H/NB)",
+   "uuid": "d02d36a1-1e40-4d27-b8ea-e3ad52688eb2",
+   "jobAdId": "9c30ee7e-7c20-4866-bde9-019d2812db20",
+   "defaultJobAd": true,
+   "refNumber": "REF32222K",
+   "company": {
+    "identifier": "Ubisoft2",
+    "name": "Ubisoft"
+   },
+   "releasedDate": "2026-10-26T10:05:44.410Z",
+   "location": {
+    "city": "Paris",
+    "region": "IDF",
+    "country": "fr",
+    "remote": false,
+    "hybrid": false,
+    "latitude": "48.8575475",
+    "longitude": "2.3513765",
+    "fullLocation": "Paris, IDF, France"
+   },
+   "industry": {
+    "id": "entertainment",
+    "label": "Entertainment"
+   },
+   "department": {
+    "id": "13847731",
+    "label": "Ubisoft"
+   },
+   "function": {
+    "id": "finance",
+    "label": "Finance"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "director",
+    "label": "Director"
+   },
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/Ubisoft2/postings/744000157766448",
+   "language": {
+    "code": "fr",
+    "label": "French",
+    "labelNative": "français"
+   }
+  }
+ ]
+}

@@ -1,11 +1,13 @@
-<p align="center"><img src="docs/logo.png" alt="Artemis" width="620"></p>
+<p align="center"><img src="docs/logo.png" alt="Artemis, open-source AI job search agent" width="620"></p>
+
+# Artemis: open-source AI job search agent
 
 <p align="center"><b>Your own job-hunting and freelance agent that runs on your computer.</b></p>
 
 Give it your resume. It finds matching jobs and client projects, finds the right person to contact, writes the email or
 proposal, sends it from your own Gmail after you approve it, and follows up until they answer.
 
-[![tests](https://github.com/Manideep-Ai-ai/artemis/actions/workflows/ci.yml/badge.svg)](https://github.com/Manideep-Ai-ai/artemis/actions/workflows/ci.yml)
+[![tests](https://github.com/Manideep-Ai-ai/artemis-job-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/Manideep-Ai-ai/artemis-job-agent/actions/workflows/ci.yml)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-black)
 ![License: MIT](https://img.shields.io/badge/license-MIT-black)
 ![Runs locally](https://img.shields.io/badge/runs-on%20your%20computer-black)
@@ -42,8 +44,8 @@ Artemis does the searching, matching, finding and writing, and leaves the decisi
 You need Python 3.10 or newer.
 
 ```bash
-git clone https://github.com/Manideep-Ai-ai/artemis.git
-cd artemis
+git clone https://github.com/Manideep-Ai-ai/artemis-job-agent.git
+cd artemis-job-agent
 python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -e .
 leadhunter web                                          # open http://127.0.0.1:8765
@@ -149,6 +151,36 @@ leadhunter/
   insights.py, db.py, config.py
 tests/                   pytest suite, runs offline
 ```
+
+## FAQ
+
+**What is Artemis?**
+Artemis is a free, open-source AI job search agent that runs on your own computer. It finds jobs and freelance
+projects that match your resume, finds the recruiter or hiring manager, writes a personal cold email or proposal,
+sends it from your Gmail after you approve it, and follows up until they reply.
+
+**Is it free?**
+Yes. Artemis is MIT-licensed. The services it can use (Gmail, Brave Search, Gemini, Groq, Hunter.io, Telegram) all
+have free tiers, and AI can also run offline with Ollama.
+
+**Does it apply to jobs automatically?**
+No. It doesn't fill in application forms. It contacts people directly with a short email, and nothing is sent until
+you approve it. At most 10 emails go out a day.
+
+**Does it automate LinkedIn?**
+No. LinkedIn bans automation. Artemis writes the connection note and message and opens the profile; you click send.
+
+**Where is my data stored?**
+On your computer: your resume, leads and contacts in a local SQLite file, and your keys in a local `.env` file.
+There is no Artemis server and no telemetry.
+
+**Which job boards does it search?**
+Greenhouse, Lever, Ashby, SmartRecruiters and Recruitee company boards, Remotive, Arbeitnow, Hacker News
+*Who is hiring?*, Freelancer.com, and any job link you paste.
+
+**How is it different from LinkedIn Easy Apply or mass-apply bots?**
+Mass-apply bots send the same application to hundreds of listings. Artemis sends a few specific emails a day to the
+right person, written from your resume and your own projects, which is how most referrals and interviews start.
 
 ## Contributing
 

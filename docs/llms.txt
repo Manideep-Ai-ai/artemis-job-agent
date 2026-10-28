@@ -1,0 +1,17 @@
+# Artemis
+
+> Artemis is a free, open-source (MIT) AI job search agent that runs on your own computer. It finds jobs and freelance projects matching your resume, finds the recruiter or hiring manager, writes a personal cold email or proposal, sends it from your own Gmail after you approve it, and follows up on day 4 and day 7 until they reply.
+
+- Source code: https://github.com/Manideep-Ai-ai/artemis-job-agent
+- Website: https://manideep-ai-ai.github.io/artemis-job-agent/
+- Install: `pip install -e .` from the repo, then run `leadhunter web` and open http://127.0.0.1:8765
+- Language: Python 3.10+, FastAPI dashboard, SQLite, no JavaScript build
+
+## Key facts
+
+- Lead sources: Greenhouse, Lever, Ashby, SmartRecruiters and Recruitee job boards, Remotive, Arbeitnow, Hacker News "Who is hiring?", Freelancer.com, and any pasted job link.
+- Finds contacts through web search (Brave, Tavily or SearXNG) and email patterns (optionally Hunter.io). It never logs into LinkedIn.
+- Writing uses AI (Gemini, Groq, OpenAI or offline Ollama) or built-in templates, plus the user's own projects and notes.
+- Safety: every first email needs approval, max 10 emails a day (hard limit 20), weekdays and working hours only, stops on reply or bounce.
+- Privacy: resume, contacts and API keys stay on the user's computer. No server, no account, no telemetry.
+- Not a mass-apply bot: it does not fill in job application forms and does not automate LinkedIn or freelance sites.

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Artemis: Open-Source AI Job Search Agent (Free, Runs on Your Computer)</title>
+<meta name="description" content="Artemis is a free, open-source AI job search agent. It finds jobs and freelance projects that match your resume, finds the right recruiter, writes the cold email or proposal, sends it from your Gmail after you approve, and follows up.">
+<link rel="canonical" href="https://manideep-ai-ai.github.io/artemis-job-agent/">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="logo.png">
+<link rel="alternate" type="text/plain" href="llms.txt" title="LLM summary">
+<link rel="sitemap" href="sitemap.xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Artemis">
+<meta property="og:title" content="Artemis: open-source AI job search agent">
+<meta property="og:description" content="Finds matching jobs, finds the recruiter, writes the email, sends it from your Gmail after you approve, and follows up. Free and local.">
+<meta property="og:url" content="https://manideep-ai-ai.github.io/artemis-job-agent/">
+<meta property="og:image" content="https://manideep-ai-ai.github.io/artemis-job-agent/og.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Artemis: open-source AI job search agent">
+<meta name="twitter:description" content="Finds matching jobs, finds the recruiter, writes the email, sends it from your Gmail after you approve, and follows up.">
+<meta name="twitter:image" content="https://manideep-ai-ai.github.io/artemis-job-agent/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Artemis",
+  "alternateName": "Artemis job agent",
+  "description": "Free, open-source AI job search agent that runs on your computer. Finds jobs and freelance projects matching your resume, finds the recruiter or hiring manager, writes a cold email or proposal, sends it from your Gmail after you approve it, and follows up.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "macOS, Windows, Linux",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "license": "https://opensource.org/licenses/MIT",
+  "url": "https://manideep-ai-ai.github.io/artemis-job-agent/",
+  "downloadUrl": "https://github.com/Manideep-Ai-ai/artemis-job-agent",
+  "codeRepository": "https://github.com/Manideep-Ai-ai/artemis-job-agent",
+  "programmingLanguage": "Python",
+  "image": "https://manideep-ai-ai.github.io/artemis-job-agent/dashboard.png",
+  "author": {"@type": "Person", "name": "Manideep Reddy Rekha", "url": "https://github.com/Manideep-Ai-ai"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is Artemis?", "acceptedAnswer": {"@type": "Answer", "text": "Artemis is a free, open-source AI job search agent that runs on your own computer. It finds jobs and freelance projects that match your resume, finds the recruiter or hiring manager, writes a personal cold email or proposal, sends it from your Gmail after you approve it, and follows up until they reply."}},
+    {"@type": "Question", "name": "Is Artemis free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Artemis is MIT-licensed. The services it can use (Gmail, Brave Search, Gemini, Groq, Hunter.io, Telegram) all have free tiers, and AI can also run offline with Ollama."}},
+    {"@type": "Question", "name": "Does Artemis apply to jobs automatically?", "acceptedAnswer": {"@type": "Answer", "text": "No. It doesn't fill in application forms. It contacts people directly with a short email, and nothing is sent until you approve it. At most 10 emails go out a day."}},
+    {"@type": "Question", "name": "Does Artemis automate LinkedIn?", "acceptedAnswer": {"@type": "Answer", "text": "No. LinkedIn bans automation. Artemis writes the connection note and message and opens the profile; you click send."}},
+    {"@type": "Question", "name": "Where is my data stored?", "acceptedAnswer": {"@type": "Answer", "text": "On your computer: your resume, leads and contacts in a local SQLite file, and your keys in a local .env file. There is no Artemis server and no telemetry."}},
+    {"@type": "Question", "name": "Which job boards does Artemis search?", "acceptedAnswer": {"@type": "Answer", "text": "Greenhouse, Lever, Ashby, SmartRecruiters and Recruitee company boards, Remotive, Arbeitnow, Hacker News Who is hiring, Freelancer.com, and any job link you paste."}},
+    {"@type": "Question", "name": "How is Artemis different from mass-apply bots?", "acceptedAnswer": {"@type": "Answer", "text": "Mass-apply bots send the same application to hundreds of listings. Artemis sends a few specific emails a day to the right person, written from your resume and your own projects, which is how most referrals and interviews start."}}
+  ]
+}
+</script>
+<style>
+:root{--bg:#fff;--sf:#f4f4f4;--ink:#000;--soft:#595959;--rule:#d4d4d4;--inv:none;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#000;--sf:#0d0d0d;--ink:#fff;--soft:#a3a3a3;--rule:#2a2a2a;--inv:invert(1);color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Geist,system-ui,sans-serif}
+a{color:var(--ink);text-underline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid var(--rule)}
+nav b{font:600 15px Geist,sans-serif;letter-spacing:.2em}
+nav a{text-decoration:none;font-size:15px}
+.hero{text-align:center;padding:48px 0 24px}
+.hero img{width:min(560px,100%);height:auto;filter:var(--inv)}
+h1{font:600 clamp(32px,5vw,52px)/1.08 Geist,sans-serif;letter-spacing:-.03em;margin:8px 0 16px}
+.lede{color:var(--soft);font-size:clamp(17px,2vw,20px);max-width:680px;margin:0 auto 28px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border:1px solid var(--ink);text-decoration:none;font-weight:500}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.shot{margin:40px 0 0;border:1px solid var(--rule)}
+.shot img{display:block;width:100%;height:auto}
+section{padding:56px 0;border-bottom:1px solid var(--rule)}
+h2{font:600 30px/1.2 Geist,sans-serif;letter-spacing:-.02em;margin:0 0 24px}
+.label{font:500 12px 'Geist Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin:0 0 8px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0;border:1px solid var(--ink)}
+.steps div{padding:18px;border-right:1px solid var(--rule)}.steps div:last-child{border:0}
+.steps small{font:500 12px 'Geist Mono',monospace;color:var(--soft)}
+.steps b{display:block;margin:6px 0 4px}
+.steps p{margin:0;color:var(--soft);font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.card{border:1px solid var(--rule);padding:20px}
+.card h3{margin:0 0 6px;font-size:18px}.card p{margin:0;color:var(--soft);font-size:15px}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px}
+.pair figure{margin:0;border:1px solid var(--rule)}.pair img{display:block;width:100%;height:auto}
+.pair figcaption{padding:10px 14px;font-size:14px;color:var(--soft);border-top:1px solid var(--rule)}
+pre{background:var(--sf);border:1px solid var(--rule);padding:18px;overflow-x:auto;font:400 14px/1.7 'Geist Mono',monospace}
+details{border-top:1px solid var(--rule);padding:16px 0}details:last-of-type{border-bottom:1px solid var(--rule)}
+summary{cursor:pointer;font-weight:500;font-size:18px}
+details p{color:var(--soft);margin:10px 0 0}
+footer{padding:32px 0 48px;color:var(--soft);font-size:14px;text-align:center}
+@media(max-width:640px){.steps div{border-right:0;border-bottom:1px solid var(--rule)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><b>ARTEMIS</b><a href="https://github.com/Manideep-Ai-ai/artemis-job-agent">GitHub ↗</a></nav>
+
+<header class="hero">
+  <img src="logo.png" alt="Artemis logo: the archer goddess drawing a bow" width="1400" height="700">
+  <h1>Open-source AI job search agent</h1>
+  <p class="lede">Give it your resume. Artemis finds matching jobs and freelance projects, finds the right recruiter,
+    writes the email or proposal, sends it from your Gmail after you approve, and follows up until they answer.
+    Free, and it runs on your own computer.</p>
+  <div class="cta">
+    <a class="btn solid" href="https://github.com/Manideep-Ai-ai/artemis-job-agent">★ Star on GitHub</a>
+    <a class="btn" href="#quick-start">Quick start</a>
+  </div>
+  <figure class="shot"><img src="dashboard.png" alt="Artemis dashboard showing matches, people contacted, replies and reply rate" width="2880" height="1784" loading="eager"></figure>
+</header>
+
+<section>
+  <p class="label">How it works</p>
+  <h2>From job post to interview, in five steps</h2>
+  <div class="steps">
+    <div><small>01</small><b>Find leads</b><p>Company job boards, remote job lists, Hacker News, Freelancer.com, or any link.</p></div>
+    <div><small>02</small><b>Match</b><p>Scores each lead against your skills, roles, cities and rates, and shows why.</p></div>
+    <div><small>03</small><b>Find the person</b><p>The recruiter and hiring manager, with their likely email.</p></div>
+    <div><small>04</small><b>Write and send</b><p>A short email from your resume and projects. Sent from your Gmail after you approve.</p></div>
+    <div><small>05</small><b>Follow up</b><p>Day 4 and day 7, in the same thread. Stops as soon as they reply.</p></div>
+  </div>
+</section>
+
+<section>
+  <p class="label">Why people use it</p>
+  <h2>Reach the person who hires, not the job board</h2>
+  <div class="grid">
+    <div class="card"><h3>Specific, not spammy</h3><p>A few personal emails a day to the right person beat hundreds of one-click applications.</p></div>
+    <div class="card"><h3>Sounds like you</h3><p>Mentions your most relevant project with its link, and follows your own notes for each lead.</p></div>
+    <div class="card"><h3>You stay in control</h3><p>Every first email waits for your approval. Max 10 a day, weekdays and working hours only.</p></div>
+    <div class="card"><h3>Private by design</h3><p>Resume, contacts and keys stay on your computer. No account, no server, no telemetry.</p></div>
+    <div class="card"><h3>Jobs and freelance</h3><p>Job hunting, freelance clients, or both. Suggests a quote for every project.</p></div>
+    <div class="card"><h3>Free</h3><p>MIT-licensed. Works with free tiers of Gmail, Gemini, Groq, Brave Search and Hunter.io, or offline AI with Ollama.</p></div>
+  </div>
+</section>
+
+<section>
+  <p class="label">Inside</p>
+  <h2>Everything in one dashboard</h2>
+  <div class="pair">
+    <figure><img src="leads.png" alt="Leads page ranking jobs and freelance projects by fit" width="2880" height="1784" loading="lazy"><figcaption>Leads, ranked by how well they fit you</figcaption></figure>
+    <figure><img src="pipeline.png" alt="Pipeline board with columns To review, Sent, Replied, Interview and Closed" width="2880" height="1784" loading="lazy"><figcaption>Pipeline: everyone you've reached out to</figcaption></figure>
+  </div>
+</section>
+
+<section id="quick-start">
+  <p class="label">Quick start</p>
+  <h2>Running in two minutes</h2>
+  <pre>git clone https://github.com/Manideep-Ai-ai/artemis-job-agent.git
+cd artemis-job-agent
+python -m venv .venv &amp;&amp; source .venv/bin/activate
+pip install -e .
+leadhunter web        # then open http://127.0.0.1:8765</pre>
+  <p>A setup wizard asks for your goal, your resume and your Gmail App Password. It starts in practice mode, so you can
+    read every email before anything is sent. <a href="https://github.com/Manideep-Ai-ai/artemis-job-agent#readme">Full guide on GitHub</a>.</p>
+</section>
+
+<section>
+  <p class="label">FAQ</p>
+  <h2>Questions</h2>
+  <details open><summary>What is Artemis?</summary><p>Artemis is a free, open-source AI job search agent that runs on your own computer. It finds jobs and freelance projects that match your resume, finds the recruiter or hiring manager, writes a personal cold email or proposal, sends it from your Gmail after you approve it, and follows up until they reply.</p></details>
+  <details><summary>Is it free?</summary><p>Yes. Artemis is MIT-licensed. The services it can use (Gmail, Brave Search, Gemini, Groq, Hunter.io, Telegram) all have free tiers, and AI can also run offline with Ollama.</p></details>
+  <details><summary>Does it apply to jobs automatically?</summary><p>No. It doesn't fill in application forms. It contacts people directly with a short email, and nothing is sent until you approve it. At most 10 emails go out a day.</p></details>
+  <details><summary>Does it automate LinkedIn?</summary><p>No. LinkedIn bans automation. Artemis writes the connection note and message and opens the profile; you click send.</p></details>
+  <details><summary>Where is my data stored?</summary><p>On your computer: your resume, leads and contacts in a local SQLite file, and your keys in a local .env file. There is no Artemis server and no telemetry.</p></details>
+  <details><summary>Which job boards does it search?</summary><p>Greenhouse, Lever, Ashby, SmartRecruiters and Recruitee company boards, Remotive, Arbeitnow, Hacker News Who is hiring, Freelancer.com, and any job link you paste.</p></details>
+  <details><summary>How is it different from mass-apply bots?</summary><p>Mass-apply bots send the same application to hundreds of listings. Artemis sends a few specific emails a day to the right person, written from your resume and your own projects, which is how most referrals and interviews start.</p></details>
+</section>
+
+<footer>Artemis is MIT-licensed and made by <a href="https://github.com/Manideep-Ai-ai">Manideep Reddy Rekha</a>.
+  If it helps you land an interview, <a href="https://github.com/Manideep-Ai-ai/artemis-job-agent">a star on GitHub</a> helps others find it.</footer>
+</div>
+</body>
+</html>

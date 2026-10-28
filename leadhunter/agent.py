@@ -31,6 +31,11 @@ from leadhunter.search import Search
 log = logging.getLogger("leadhunter")
 
 
+def _cell(v):
+    """Stop a lead title like '=HYPERLINK(...)' from running as a formula when the CSV is opened in Excel/Sheets."""
+    return "'" + v if isinstance(v, str) and v[:1] in ("=", "+", "-", "@", "\t", "\r") else v
+
+
 class Agent:
     def __init__(self, cfg: Config, db: DB | None = None, mailer: Mailer | None = None,
                  search: Search | None = None, ai: AI | None = None, sleep=time.sleep, clock=None):
@@ -204,7 +209,7 @@ class Agent:
             w = csv.writer(f)
             w.writerow(cols)
             for r in rows:
-                w.writerow([", ".join(json.loads(r["matched"] or "[]")) if c == "matched" else r[c] for c in cols])
+                w.writerow([_cell(", ".join(json.loads(r["matched"] or "[]")) if c == "matched" else r[c]) for c in cols])
         return len(rows)
 
     def add_contact(self, job_id: int, name: str, email: str, title: str = "", linkedin_url: str = "") -> int | None:

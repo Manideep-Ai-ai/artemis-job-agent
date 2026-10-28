@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import html
 from pathlib import Path
+from urllib.parse import urlparse
 
 from fastapi.responses import HTMLResponse
 
@@ -204,6 +205,11 @@ def flash_kind(msg: str) -> tuple[str, str]:
     if any(w in low for w in _BAD):
         return "[!]", msg
     return ("[✓]" if any(w in low for w in _GOOD) else "[i]"), msg
+
+
+def href(url: str | None) -> str:
+    """A link from outside data (job posts, profiles): only http(s), so a post can't plant a javascript: link."""
+    return e(url) if url and urlparse(url.strip()).scheme in ("http", "https") else "#"
 
 
 def win(title: str, body: str) -> str:

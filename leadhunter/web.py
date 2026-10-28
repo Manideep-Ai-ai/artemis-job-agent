@@ -9,10 +9,10 @@ import json
 import re
 import threading
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 
 from fastapi import FastAPI, File, Form, UploadFile
-from fastapi.responses import HTMLResponse, RedirectResponse, Response
+from fastapi.responses import HTMLResponse, PlainTextResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 
 from leadhunter.agent import Agent
@@ -24,7 +24,7 @@ from leadhunter.joblink import JobLinkError
 from leadhunter.mailer import Mailer
 from leadhunter.resume import extract_profile, read_text
 from leadhunter.terminal import AI_KEYS, AI_MODELS, SEARCH_KEYS
-from leadhunter.theme import STATIC, meter, page, win
+from leadhunter.theme import STATIC, href, meter, page, win
 
 e = html.escape
 
@@ -40,6 +40,7 @@ def _list(s: str) -> list[str]:
     return [x.strip() for x in (s or "").split(",") if x.strip()]
 
 
+LOCAL_HOSTS = {"127.0.0.1", "localhost", "testserver"}  # testserver: FastAPI's TestClient
 _URL = re.compile(r"https://[\w./-]+[\w/]")
 
 
@@ -51,6 +52,18 @@ def linkify(text: str) -> str:
 def create_app(cfg: Config, agent: Agent | None = None, config_path: str | None = None, env_path: str = ".env") -> FastAPI:
     app = FastAPI(title="LeadHunter", docs_url=None, redoc_url=None)
     app.mount("/assets", StaticFiles(directory=STATIC), name="assets")
+
+    @app.middleware("http")
+    async def local_only(request, call_next):
+        """Other websites must not drive this dashboard. Blocks DNS rebinding (wrong Host) and
+        cross-site form posts (Origin/Referer from another site), so a page you visit can't send emails or change keys."""
+        host = request.headers.get("host") or ""
+        if host.rsplit(":", 1)[0] not in LOCAL_HOSTS:
+            return PlainTextResponse("Artemis only answers on 127.0.0.1.", status_code=403)
+        src = request.headers.get("origin") or request.headers.get("referer")
+        if request.method != "GET" and src and urlparse(src).netloc != host:
+            return PlainTextResponse("Blocked a form sent from another website.", status_code=403)
+        return await call_next(request)
     a = agent or Agent(cfg)
     state = {"cfg": cfg}
 
@@ -479,9 +492,9 @@ def create_app(cfg: Config, agent: Agent | None = None, config_path: str | None 
                 li += f"""<div style="margin-top:14px"><b>LinkedIn · {e(lm['subject'])}</b> <span class="pill {e(lm['status'])}">{e(lm['status'])}</span>
                   <pre class="copy" id="li{lm['id']}">{e(lm['body'])}</pre>
                   <div class="row"><button type="button" class="quiet" data-copy="li{lm['id']}">Copy</button>
-                  <a class="btn quiet" href="{e(ct['linkedin_url'])}" target="_blank" rel="noopener">Open profile</a>
+                  <a class="btn quiet" href="{href(ct['linkedin_url'])}" target="_blank" rel="noopener">Open profile</a>
                   {'' if lm['status'] != 'draft' else f'<form method="post" action="/message/{lm["id"]}/done"><button class="quiet">I sent it</button></form>'}</div></div>"""
-            prof = f' · <a href="{e(ct["linkedin_url"])}" target="_blank" rel="noopener">LinkedIn</a>' if ct["linkedin_url"] else ""
+            prof = f' · <a href="{href(ct["linkedin_url"])}" target="_blank" rel="noopener">LinkedIn</a>' if ct["linkedin_url"] else ""
             replied = (f'<div class="note"><div><b>They replied {e(ct["reply_at"][:10])}</b> <span class="pill {e(ct["sentiment"])}">{e(ct["sentiment"])}</span>'
                        f'<br>“{e(ct["reply_preview"] or "")}”</div></div>') if ct["reply_at"] else ""
             cards += f"""<div class="card"><h2>{e(ct['name'])} <span class="pill {e(ct['status'])}">{e(ct['status'])}</span></h2>
@@ -498,7 +511,7 @@ def create_app(cfg: Config, agent: Agent | None = None, config_path: str | None 
               <textarea name="body" id="pp{pm['id']}" style="min-height:260px">{e(pm['body'])}</textarea>
               <div class="row"><button class="quiet" name="approve" value="0">Save my edits</button></div></form>
               <div class="row"><button type="button" class="quiet" data-copy="pp{pm['id']}">Copy</button>
-              <a class="btn quiet" href="{e(j['url'])}" target="_blank" rel="noopener">Open project</a>
+              <a class="btn quiet" href="{href(j['url'])}" target="_blank" rel="noopener">Open project</a>
               {'' if pm['status'] != 'draft' else f'<form method="post" action="/message/{pm["id"]}/done"><button class="quiet">I posted it</button></form>'}</div></div>"""
         skills = json.loads(j["matched"] or "[]")
         matched = " ".join(f"<mark>{e(x)}</mark>" for x in skills)
@@ -524,7 +537,7 @@ def create_app(cfg: Config, agent: Agent | None = None, config_path: str | None 
           <p>{e(j['company'] or ('Freelance client' if free else '?'))} · {e(j['location'] or 'location n/a')} · <span class="pill {e(j['fit'] or 'weak')}">{e(j['fit'] or 'weak')}</span>{money}
           {'' if free else ' · email domain: <b>' + e(j['company_domain'] or 'unknown') + '</b>'}
           {f' · email in post: <b>{e(j["contact_email"])}</b>' if j['contact_email'] else ''}
-          {f' · <a href="{e(j["url"])}" target="_blank" rel="noopener">Open posting</a>' if j['url'] else ''}</p>
+          {f' · <a href="{href(j["url"])}" target="_blank" rel="noopener">Open posting</a>' if j['url'] else ''}</p>
           {why_fit}<div class="row">{reach}<form method="post" action="/job/{jid}/ignore"><button class="quiet">Not interested</button></form></div>
           <details><summary class="muted">Full description</summary><p style="white-space:pre-wrap">{e((j['description'] or '')[:8000])}</p></details></div>
           {notes_card}{prop}{people}
@@ -629,7 +642,7 @@ def create_app(cfg: Config, agent: Agent | None = None, config_path: str | None 
             items += f"""<div class="card"><h2>{head}</h2><p class="muted">For <a href="/job/{m['job_id']}">{e(m['jt'])}</a> {e(m['company'] or '')}</p>
               <pre class="copy" id="m{m['id']}">{e(m['body'])}</pre>
               <div class="row"><button type="button" class="quiet" data-copy="m{m['id']}">Copy</button>
-              <a class="btn quiet" href="{e(where or '#')}" target="_blank" rel="noopener">Open {'profile' if m['channel'] == 'linkedin' else 'project'}</a>
+              <a class="btn quiet" href="{href(where)}" target="_blank" rel="noopener">Open {'profile' if m['channel'] == 'linkedin' else 'project'}</a>
               <form method="post" action="/message/{m['id']}/done"><input type="hidden" name="next" value="/manual"><button class="quiet">I sent it</button></form></div></div>"""
         body = f"""<span class="label">Send by hand</span><h1>{len(rows)} message{'' if len(rows) == 1 else 's'} for you to paste and send</h1><p class="muted">LinkedIn notes and freelance proposals you send yourself, so your accounts stay safe.
           Copy, open, paste, then click “I sent it”.</p>{items or '<div class="card muted">[ ] Nothing waiting.</div>'}"""

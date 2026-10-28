@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import copy
 import os
+import re
 from pathlib import Path
 
 import yaml
@@ -135,6 +136,9 @@ def save_config(cfg: dict, path: str | Path = "config.yaml") -> None:
 
 def save_env(updates: dict[str, str], path: str | Path = ".env") -> None:
     """Set KEY=value lines in .env (creating it), keeping everything else. Also updates os.environ."""
+    if any(not re.fullmatch(r"[A-Z][A-Z0-9_]*", k) for k in updates):
+        raise ValueError("bad .env key")
+    updates = {k: re.sub(r"[\r\n]", "", str(v)) for k, v in updates.items()}  # a pasted line break can't add lines
     p = Path(path)
     lines = p.read_text(encoding="utf-8").splitlines() if p.exists() else []
     done = set()
